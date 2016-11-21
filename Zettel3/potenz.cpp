@@ -34,12 +34,16 @@ double power(double x, int n){
 /*
   function that prints the relevant parameters to compare 
   the two methods of calculating powers of x
+  The comparison between our own function and std::pow was done by 
+  printing the results instead of using the assert() function, because
+  of the differences described below. This would crash the program for 
+  certain inut values.
 */
 void testing(double x, int n, int i){
   cout << "test no." << to_string(i) << ":" << endl;
   cout << "to calculate: " << to_string(x) << "^" << to_string(n) << endl;
   cout << "result of own function: " << to_string(power(x,n)) << endl;
-  cout << "result of std:_pow():   " << to_string(std::pow(x,n)) << endl;
+  cout << "result of std::pow():   " << to_string(std::pow(x,n)) << endl;
   cout << "difference:             " << to_string(power(x,n)-std::pow(x,n)) << endl;
   cout << endl;
 }
