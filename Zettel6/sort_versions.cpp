@@ -27,7 +27,7 @@ vector<int> split_version(string version){
     i++;
   }
   output.push_back(atoi(current_number.c_str())); // Add last number to output
-
+  output.push_back(-1); // Add -1 to the end, to make the program see 1.1.1 bigger than 1.1
   return output;
 }
 
@@ -40,9 +40,15 @@ bool version_less(string v1, string v2){
   vector<int> vers2 = split_version(v2);
 
   //going through the levels of the version number
+  if (vers1.size() <= vers2.size())
+    int size = vers1.size();
+  else
+    int size = vers2.size();
   for (int i=0; i<vers1.size(); i++){
     if (vers1[i] < vers2[i])
       return true;
+    else if (vers1[i] > vers2[i])
+      return false;
   }
   return false;
 }
