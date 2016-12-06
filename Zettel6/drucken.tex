@@ -1,0 +1,170 @@
+\documentclass[11pt,a4paper,captions=tableheading]{scrartcl}
+
+%Diverse Pakete
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{hyphsubst}
+\usepackage{lmodern} %Latin Modern 
+\usepackage{sectsty}
+\usepackage{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{graphicx} 
+\usepackage{subfig}
+\usepackage{color}
+\usepackage{bm}
+\usepackage{epstopdf}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,arrows,calc,arrows.meta}
+
+\usepackage[locale=DE,exponent-product=\cdot,per-mode=symbol,detect-all]{siunitx}
+
+\usepackage{mathtools}
+\usepackage{nicefrac}
+
+\usepackage{environ}
+\usepackage{upgreek}
+
+\usepackage{contour}
+
+\usepackage{icomma}
+
+%Aufzählungen und Listen
+\usepackage{mdwlist}  %Mind. onehalfspacing verwenden!
+
+\usepackage{paralist}  %Für spezielle Aufzählungszeichen und Listen im Fließtext !!Vor enumitem laden!!
+
+%Mathezeugs
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{amsthm}
+\newtheorem{ex}{Beispiel}
+\newtheorem{thm}{Satz}
+\newtheorem{dfn}{Definition}
+\newcommand{\arsinh}{\operatorname{arsinh}}
+\newcommand{\arcosh}{\operatorname{arcosh}}
+\newcommand{\artanh}{\operatorname{artanh}}
+\newcommand{\arcoth}{\operatorname{arcoth}}
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\usepackage{wrapfig}
+\usepackage{blindtext}
+\usepackage{enumerate}
+\usepackage{wasysym}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{pdfpages}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
+
+%Referenzieren und Hyperlinks
+\usepackage[ngerman]{varioref}
+
+\usepackage{hyperref}
+
+\usepackage[ngerman]{cleveref}
+
+
+%\author{Kianusch Vahid Yousefnia}
+\title{IPI-Zettel 6}
+%\newcommand\shorttitle{Keynote speech}
+\subtitle{Jan Maintok, Raphael Senghaas, Kianusch Vahid Yousefnia\\ Tutor: Enes Witwit}
+\date{\today}
+
+\makeatletter
+\let\insertauthor\@author
+\makeatother
+
+\makeatletter
+\let\inserttitle\@title
+\makeatother
+
+\makeatletter
+\let\insertsubtitle\@subtitle
+\makeatother
+
+\makeatletter
+\let\insertdate\@date
+\makeatother
+
+\usepackage{listingsutf8}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{
+  literate={ö}{{\"o}}1
+           {ä}{{\"a}}1
+           {ü}{{\"u}}1
+           {ß}{{\"s}}1
+}
+
+\lstset{ %
+  backgroundcolor=\color{mygray!20},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=none,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=none,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                 % the language of the code
+  otherkeywords={...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+
+%\pagestyle{scrheadings}
+
+
+%Seitenlayout
+\geometry{
+a4paper,
+top=25mm,
+left=25mm,
+right=25mm,
+bottom=25mm,
+headheight=12mm,
+footskip=12mm
+}
+
+%Titelseite etc. einbinden
+
+\begin{document}
+
+
+%Titelüberschrift
+\setcounter{page}{1}
+\begin{center}
+\vspace*{0pt}
+{\huge \normalfont\sffamily \noindent\textbf{\inserttitle}}\\[0.6\baselineskip]
+{\Large \normalfont\sffamily \noindent\textbf{\insertsubtitle}}
+\end{center}
+\vspace*{10pt}
+\noindent
+
+%Eigentlicher Text
+\section*{Aufgabe 1}
+\lstinputlisting{format_numbers.cpp}
+\section*{Aufgabe 2}
+\lstinputlisting{sort_versions.cpp}
+\section*{Aufgabe 3}
+\lstinputlisting{decrypt.cpp}
+\end{document}
