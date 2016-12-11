@@ -1,0 +1,217 @@
+\emph{Annahme:} Es wird im folgenden verwendet, dass für die Betrachtung der Komplexität des Sortieralgorithmus nur die Vergleiche zwischen Elementen des zu Sortierenden Vektors relevant sind nicht aber die Vergleichsoperationen in der for-Schleife oder der If-Abfrage, diese ändern das Ergebnis nur um einen konstanten Faktor und bringen keinen zusätzlichen Erkenntnisgewinn.\\
+Es gilt für den Fall, dass der Vektor bereits sortiert ist, dass
+\begin{equation}
+  f_1(n)=n-1 \in\Omega(n).
+\end{equation}
+Es muss hier die $\Omega$-Notation verwendet werden, weil man am Ende wissen will, zwischen welchen beiden Schranken die Funktion wächst. Die untere Schranke legt man dann durch $\Omega$ fest, die Obere durch $\mathcal O$.\\
+Die Maximale Anzahl an Vergleichen wird benötigt, wenn der Vektor von hinten nach vorne sortiert ist, damit ergibt sich
+\begin{equation}
+  f_2(n)=\sum_{k=1}^{n-1}k=\frac{n(n-1)}{2}\in \mathcal O(n^2).
+\end{equation}
+Für die zufällige Sortierung ergibt sich
+\begin{equation}
+  f_3(n)=\sum_{k=1}^{n-1}\frac{k}{2}=\frac{n(n-1)}{4}\in \mathcal O(n^2)
+\end{equation}
+
+Der Code in \glqq sort\_time.cpp\grqq gab die folgenden Laufzeitsergebnisse mit Codeoptimierung:\\
+\begin{tabularx}{0.24\textwidth}{|c|X|}
+\hline
+\multicolumn{2}{|c|}{bestcase}\\
+\hline
+$n$ & Laufzeit $t$[s]\\
+\hline
+ 10000000 & 0.120 \\
+\hline
+ 25000000 & 0.301 \\
+\hline
+ 50000000 & 0.599 \\
+\hline
+ 75000000 & 0.901 \\
+\hline
+ 100000000 & 1.203 \\
+\hline
+\end{tabularx}
+\begin{tabularx}{0.24\textwidth}{|c|X|}
+\hline
+\multicolumn{2}{|c|}{typical case}\\
+\hline
+$n$ & Laufzeit \\
+ & $t$[s]\\
+\hline
+ 5000 & 0.0540 \\
+\hline
+ 10000 & 0.216 \\
+\hline
+ 15000 & 0.488 \\
+\hline
+ 20000 & 0.867 \\
+\hline
+ 25000 & 1.35 \\
+\hline
+\end{tabularx}
+\begin{tabularx}{0.24\textwidth}{|c|X|}
+\hline
+\multicolumn{2}{|c|}{worstcase}\\
+\hline
+$n$ & Laufzeit \\
+ & $t$[s]\\
+\hline
+ 5000 & 0.109 \\
+\hline
+ 10000 & 0.433 \\
+\hline
+ 15000 & 0.976 \\
+\hline
+ 20000 & 1.74 \\
+\hline
+ 25000 & 2.72 \\
+\hline
+\end{tabularx}
+\begin{tabularx}{0.24\textwidth}{|c|X|}
+\hline
+\multicolumn{2}{|c|}{std::sort}\\
+\hline
+$n$ & Laufzeit $t$[s]\\
+\hline
+ 500000 & 0.211\\
+\hline
+ 1000000 & 0.444 \\
+\hline
+ 1500000 & 0.681 \\
+\hline
+ 2000000 & 0.926 \\
+\hline
+ 2500000 & 1.17 \\
+\hline
+\end{tabularx}
+\\und ohne:\\
+\begin{tabularx}{0.24\textwidth}{|c|X|}
+\hline
+\multicolumn{2}{|c|}{bestcase}\\
+\hline
+$n$ & Laufzeit $t$[s]\\
+\hline
+ 50000000 & 0.0748 \\
+\hline
+ 100000000 & 0.150 \\
+\hline
+ 250000000 & 0.372 \\
+\hline
+ 500000000 & 0.738 \\
+\hline
+ 750000000 & 1.11 \\
+\hline
+\end{tabularx}
+\begin{tabularx}{0.24\textwidth}{|c|X|}
+\hline
+\multicolumn{2}{|c|}{typical case}\\
+\hline
+$n$ & Laufzeit $t$[s]\\
+\hline
+ 20000 & 0.0890 \\
+\hline
+ 40000 & 0.340 \\
+\hline
+ 60000 & 0.774 \\
+\hline
+ 80000 & 1.38 \\
+\hline
+ 100000 & 2.17 \\
+\hline
+\end{tabularx}
+\begin{tabularx}{0.24\textwidth}{|c|X|}
+\hline
+\multicolumn{2}{|c|}{worstcase}\\
+\hline
+$n$ & Laufzeit $t$[s]\\
+\hline
+ 20000 & 0.170 \\
+\hline
+ 40000 & 0.690 \\
+\hline
+ 60000 & 1.56 \\
+\hline
+ 80000 & 2.79 \\
+\hline
+ 100000 & 4.37 \\
+\hline
+\end{tabularx}
+\begin{tabularx}{0.24\textwidth}{|c|X|}
+\hline
+\multicolumn{2}{|c|}{std::sort}\\
+\hline
+$n$ & Laufzeit $t$[s]\\
+\hline
+ 500000 & 0.0387\\
+\hline
+ 1000000 & 0.0818 \\
+\hline
+ 1500000 & 0.126 \\
+\hline
+ 2000000 & 0.171 \\
+\hline
+ 2500000 & 0.217 \\
+\hline
+\end{tabularx}
+
+damit ergeben sich für die optimierte Version
+\begin{equation}
+  C_{1}=1.20\cdot 10^{-8}\mathrm{s}
+\end{equation}
+\begin{equation}
+  C_{2}=2.16\cdot 10^{-9}\mathrm{s}
+\end{equation}
+\begin{equation}
+  C_{3}=4.34\cdot 10^{-9}\mathrm{s}
+\end{equation}
+\begin{equation}
+  C_{4}=4.51\cdot 10^{-7}\mathrm{s}
+\end{equation}
+wobei $i=1$ dem best case, $i=2$ dem typical case, $i=3$ dem worstcase und $i=4$ der std-Sortierung entspricht.
+Für die nicht-optimierte Variante ergeben sich
+\begin{equation}
+  C_{1}=1.49\cdot 10^{-9}\mathrm{s}
+\end{equation}
+\begin{equation}
+  C_{2}=2.17\cdot 10^{-10}\mathrm{s}
+\end{equation}
+\begin{equation}
+  C_{3}=4.33\cdot 10^{-10}\mathrm{s}
+\end{equation}
+\begin{equation}
+  C_{4}=1.36\cdot 10^{-8}\mathrm{s}
+\end{equation}
+Außerdem sieht man bei Berechnung der Werte, dass sie unabhängig von n sind. Damit ergeben sich mit Optimierung
+\begin{equation}
+  t_1(n)=1.20\cdot 10^{-8}\mathrm{s}\cdot n
+\end{equation}
+\begin{equation}
+  t_2(n)=2.16\cdot 10^{-9}\mathrm{s}\cdot n^2
+\end{equation}
+\begin{equation}
+  t_3(n)=4.34\cdot 10^{-9}\mathrm{s}\cdot n^2
+\end{equation}
+\begin{equation}
+  t_4(n)=4.51\cdot 10^{-7}\mathrm{s}\cdot n\log(n)
+\end{equation}
+und ohne Optimierung
+\begin{equation}
+  t_1(n)=1.49\cdot 10^{-9}\mathrm{s}\cdot n
+\end{equation}
+\begin{equation}
+  t_2(n)=2.17\cdot 10^{-10}\mathrm{s}\cdot n^2
+\end{equation}
+\begin{equation}
+  t_3(n)=4.33\cdot 10^{-10}\mathrm{s}\cdot n^2
+\end{equation}
+\begin{equation}
+  t_4(n)=1.36\cdot 10^{-8}\mathrm{s}\cdot n\log(n).
+\end{equation}
+
+Löst man nun die Gleichung 
+\begin{equation}
+  t_2(n)=t_4(n)
+\end{equation}
+so erhält man, dass für den typtischen Fall die Insertionsortvariante mit Optimierung bis $n\approx1531$ mit std::sort mithalten kann, ohne Optimierung nur bis $n\approx371$.
+Genaue Zahlenwerte hängen jedoch vermutlich auch signifikant von der verwendeten Hardware ab, weshalb diese Ergebnisse im Detail (von den genauen Zahlenwerten her) vermutlich nicht übertragbar sind.
+
