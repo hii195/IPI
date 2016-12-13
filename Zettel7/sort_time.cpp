@@ -90,17 +90,19 @@ double std_sort_time(int n){
   return diff.count();
 }
 
-
+//Funktionen, die die kürzeste Laufzeit aus drei Versuchen auf die Konsole ausgeben
 void printtimes_best(int n){
   cout << "---------------------------" << endl;
   cout << "best time, n= " << n << ":" << endl;
   cout << min(min(insertion_sort_best_time(n),insertion_sort_best_time(n)),insertion_sort_best_time(n)) << endl;
 }
+
 void printtimes_typical(int n){
   cout << "---------------------------" << endl;
   cout << "typical time, n= " << n << ":" << endl;
   cout << min(min(insertion_sort_typical_time(n),insertion_sort_typical_time(n)),insertion_sort_typical_time(n)) << endl;
 }
+
 void printtimes_worst(int n){
   cout << "---------------------------" << endl;
   cout << "worst time, n= " << n << ":" << endl;
