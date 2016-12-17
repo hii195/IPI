@@ -33,6 +33,7 @@ int main (){
 	map<int, char> sorted;
 	for (auto iter = counts.begin(); iter != counts.end(); iter++){
 		sorted[(*iter).second] = (*iter).first;
+		//more elegant: sorted[iter->second] = iter->first;
 	}
 
 	// frequency of english letters
